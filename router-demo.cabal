@@ -1,0 +1,61 @@
+name:
+  router-demo
+version:
+  0.1
+synopsis:
+  Demo application showcasing the "router" library
+homepage:
+  https://github.com/nikita-volkov/router-demo
+bug-reports:
+  https://github.com/nikita-volkov/router-demo/issues 
+author:
+  Nikita Volkov <nikita.y.volkov@mail.ru>
+maintainer:
+  Nikita Volkov <nikita.y.volkov@mail.ru>
+copyright:
+  (c) 2016, Nikita Volkov
+license:
+  MIT
+license-file:
+  LICENSE
+build-type:
+  Simple
+cabal-version:
+  >=1.10
+
+
+source-repository head
+  type:
+    git
+  location:
+    git://github.com/nikita-volkov/router-demo.git
+
+
+executable demo
+  hs-source-dirs:
+    demo
+  main-is:
+    Main.hs
+  other-modules:
+    Main.RequestParsers
+    Main.ResponseBuilders
+    Main.Effect
+  ghc-options:
+    -O2
+    -threaded
+    "-with-rtsopts=-N"
+  ghc-prof-options:
+    -O2
+    -threaded
+    -fprof-auto
+    "-with-rtsopts=-N -p -s -h -i0.1"
+  default-extensions:
+    Arrows, BangPatterns, ConstraintKinds, DataKinds, DefaultSignatures, DeriveDataTypeable, DeriveFoldable, DeriveFunctor, DeriveGeneric, DeriveTraversable, EmptyDataDecls, FlexibleContexts, FlexibleInstances, FunctionalDependencies, GADTs, GeneralizedNewtypeDeriving, LambdaCase, LiberalTypeSynonyms, MagicHash, MultiParamTypeClasses, MultiWayIf, NoImplicitPrelude, NoMonomorphismRestriction, OverloadedStrings, PatternGuards, ParallelListComp, QuasiQuotes, RankNTypes, RecordWildCards, ScopedTypeVariables, StandaloneDeriving, TemplateHaskell, TupleSections, TypeFamilies, TypeOperators, UnboxedTuples
+  default-language:
+    Haskell2010
+  build-depends:
+    router == 0.1.*,
+    router-wai == 0.1.*,
+    attoparsec == 0.13.*,
+    rebase >= 1.0.3 && < 2
+
