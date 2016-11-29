@@ -2,7 +2,7 @@ module Strelka.Demo.ResponseBuilder where
 
 import Prelude
 import Strelka.ResponseBuilder
-import qualified Data.Text as A
+import qualified Strelka.ResponseBody as A
 
 
 notFoundInHTML :: ResponseBuilder
@@ -31,33 +31,33 @@ putPassword username =
 
 listCredentialsAsJSON :: [(Text, Text)] -> ResponseBuilder
 listCredentialsAsJSON credentials =
-  json (fromString bodyString)
+  json body
   where
-    bodyString =
-      "[" <> (mconcat . intersperse "," . map credentialString) credentials <> "]"
+    body =
+      "[" <> (mconcat . intersperse "," . map credentialBody) credentials <> "]"
       where
-        credentialString (username, password) =
-          "{" <> "\"username\":" <> usernameString <> "," <> "\"password\":" <> passwordString <> "}"
+        credentialBody (username, password) =
+          "{" <> "\"username\":" <> usernameBody <> "," <> "\"password\":" <> passwordBody <> "}"
           where
-            usernameString =
-              "\"" <> A.unpack username <> "\""
-            passwordString =
-              "\"" <> A.unpack password <> "\""
+            usernameBody =
+              "\"" <> A.text username <> "\""
+            passwordBody =
+              "\"" <> A.text password <> "\""
 
 listCredentialsAsHTML :: [(Text, Text)] -> ResponseBuilder
 listCredentialsAsHTML credentials =
-  html (fromString bodyString)
+  html body
   where
-    bodyString =
-      "<ul>" <> foldMap credentialString credentials <> "</ul>"
+    body =
+      "<ul>" <> foldMap credentialBody credentials <> "</ul>"
       where
-        credentialString (username, password) =
-          "<li>" <> usernameString <> ":" <> passwordString <> "</li>"
+        credentialBody (username, password) =
+          "<li>" <> usernameBody <> ":" <> passwordBody <> "</li>"
           where
-            usernameString =
-              "<b>" <> A.unpack username <> "</b>"
-            passwordString =
-              A.unpack password
+            usernameBody =
+              "<b>" <> A.text username <> "</b>"
+            passwordBody =
+              A.text password
 
 listNumbersAsJSON :: [Int] -> ResponseBuilder
 listNumbersAsJSON numbers =
