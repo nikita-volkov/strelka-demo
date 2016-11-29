@@ -57,5 +57,5 @@ executable demo
     strelka == 0.4.*,
     strelka-wai == 0.4.*,
     attoparsec == 0.13.*,
-    rebase >= 1.0.3 && < 2
+    rerebase == 1.*
 

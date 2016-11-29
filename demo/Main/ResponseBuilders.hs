@@ -1,8 +1,8 @@
 module Main.ResponseBuilders where
 
-import Rebase.Prelude
+import Prelude
 import Strelka.ResponseBuilder
-import qualified Rebase.Data.Text as A
+import qualified Data.Text as A
 
 
 notFoundInHTML :: ResponseBuilder

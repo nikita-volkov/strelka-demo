@@ -1,9 +1,9 @@
 module Main.Effect where
 
-import Rebase.Prelude
+import Prelude
 import Strelka.ResponseBuilder (ResponseBuilder)
-import qualified Rebase.Data.HashSet as A
-import qualified Rebase.Data.HashMap.Strict as B
+import qualified Data.HashSet as A
+import qualified Data.HashMap.Strict as B
 
 
 newtype Effect a =

@@ -1,6 +1,6 @@
 module Main.RequestParsers where
 
-import Rebase.Prelude hiding (try)
+import Prelude hiding (try)
 import Strelka.RequestParser
 import Strelka.ResponseBuilder (ResponseBuilder)
 import Main.Effect (Effect)
