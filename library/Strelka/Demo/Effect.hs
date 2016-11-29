@@ -1,24 +1,19 @@
 module Strelka.Demo.Effect where
 
 import Prelude
-import Strelka.ResponseBuilder (ResponseBuilder)
 import qualified Data.HashSet as A
 import qualified Data.HashMap.Strict as B
+import qualified Strelka.Demo.Resource as C
 
 
 newtype Effect a =
-  Effect (ReaderT Env IO a)
+  Effect (ReaderT C.Resource IO a)
   deriving (Functor, Applicative, Monad, MonadIO)
 
-type Env =
-  (TVar Numbers, TVar Credentials)
 
-type Numbers =
-  HashSet Int
-
-type Credentials =
-  HashMap Text Text
-
+run :: Effect a -> C.Resource -> IO a
+run (Effect reader) resource =
+  runReaderT reader resource
 
 addNumber :: Int -> Effect ()
 addNumber x =
@@ -32,7 +27,7 @@ deleteNumber :: Int -> Effect ()
 deleteNumber x =
   Effect (ReaderT (\(numbers, _) -> atomically (modifyTVar' numbers (A.delete x))))
 
-getCredentials :: Effect Credentials
+getCredentials :: Effect C.Credentials
 getCredentials =
   Effect (ReaderT (\(_, credentials) -> atomically (readTVar credentials)))
 
