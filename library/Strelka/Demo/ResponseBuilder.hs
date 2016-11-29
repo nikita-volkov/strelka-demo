@@ -1,4 +1,4 @@
-module Main.ResponseBuilders where
+module Strelka.Demo.ResponseBuilder where
 
 import Prelude
 import Strelka.ResponseBuilder

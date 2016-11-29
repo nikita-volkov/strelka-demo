@@ -1,4 +1,4 @@
-module Main.Effect where
+module Strelka.Demo.Effect where
 
 import Prelude
 import Strelka.ResponseBuilder (ResponseBuilder)

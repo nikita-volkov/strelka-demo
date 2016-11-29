@@ -1,11 +1,11 @@
-module Main.RequestParsers where
+module Strelka.Demo.Route where
 
 import Prelude hiding (try)
 import Strelka.RequestParser
 import Strelka.ResponseBuilder (ResponseBuilder)
-import Main.Effect (Effect)
-import qualified Main.Effect as B
-import qualified Main.ResponseBuilders as A
+import Strelka.Demo.Effect (Effect)
+import qualified Strelka.Demo.Effect as B
+import qualified Strelka.Demo.ResponseBuilder as A
 import qualified Strelka.ResponseBuilder as C
 import qualified Data.Attoparsec.ByteString.Char8 as D
 

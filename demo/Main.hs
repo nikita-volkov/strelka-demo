@@ -1,9 +1,9 @@
 module Main where
 
 import Prelude
-import qualified Main.RequestParsers as A
-import qualified Main.ResponseBuilders as B
-import qualified Main.Effect as C
+import qualified Strelka.Demo.Route as A
+import qualified Strelka.Demo.ResponseBuilder as B
+import qualified Strelka.Demo.Effect as C
 import qualified Strelka.WAI as D
 import qualified Data.HashSet as E
 import qualified Data.HashMap.Strict as F
