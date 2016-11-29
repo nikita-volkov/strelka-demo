@@ -3,6 +3,9 @@ module Strelka.Demo.ResponseBuilder where
 import Prelude
 import Strelka.ResponseBuilder
 import qualified Strelka.ResponseBody as A
+import qualified Strelka.Demo.JSONBytesBuilder as B
+import qualified JSONBytesBuilder.ByteString.Builder as C
+import qualified JSONBytesBuilder.Builder as D
 
 
 notFoundInHTML :: ResponseBuilder
@@ -22,19 +25,8 @@ badRequestInText message =
   badRequestStatus <> text (A.text message)
 
 listCredentialsAsJSON :: [(Text, Text)] -> ResponseBuilder
-listCredentialsAsJSON credentials =
-  json body
-  where
-    body =
-      "[" <> (mconcat . intersperse "," . map credentialBody) credentials <> "]"
-      where
-        credentialBody (username, password) =
-          "{" <> "\"username\":" <> usernameBody <> "," <> "\"password\":" <> passwordBody <> "}"
-          where
-            usernameBody =
-              "\"" <> A.text username <> "\""
-            passwordBody =
-              "\"" <> A.text password <> "\""
+listCredentialsAsJSON =
+  jsonBytesBuilder . B.listCredentials
 
 listCredentialsAsHTML :: [(Text, Text)] -> ResponseBuilder
 listCredentialsAsHTML credentials =
@@ -62,11 +54,8 @@ listCredentialsAsText credentials =
           A.text username <> ":" <> A.text password
 
 listNumbersAsJSON :: [Int] -> ResponseBuilder
-listNumbersAsJSON numbers =
-  json body
-  where
-    body =
-      fromString ("[" <> intercalate "," (map show numbers) <> "]")
+listNumbersAsJSON =
+  jsonBytesBuilder . B.listNumbers
 
 listNumbersAsHTML :: [Int] -> ResponseBuilder
 listNumbersAsHTML numbers =
@@ -75,3 +64,6 @@ listNumbersAsHTML numbers =
     body =
       fromString ("<ul>" <> foldMap (\x -> "<li>" <> show x <> "</li>") numbers <> "</ul>")
 
+jsonBytesBuilder :: D.Literal -> ResponseBuilder
+jsonBytesBuilder =
+  json . A.bytesBuilder . C.jsonLiteral
