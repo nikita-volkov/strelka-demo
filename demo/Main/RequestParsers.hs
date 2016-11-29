@@ -1,13 +1,12 @@
 module Main.RequestParsers where
 
 import Rebase.Prelude hiding (try)
-import Router.RequestParser
-import Router.ParamsParser
-import Router.ResponseBuilder (ResponseBuilder)
+import Strelka.RequestParser
+import Strelka.ResponseBuilder (ResponseBuilder)
 import Main.Effect (Effect)
 import qualified Main.Effect as B
 import qualified Main.ResponseBuilders as A
-import qualified Router.ResponseBuilder as C
+import qualified Strelka.ResponseBuilder as C
 import qualified Data.Attoparsec.ByteString.Char8 as D
 
 

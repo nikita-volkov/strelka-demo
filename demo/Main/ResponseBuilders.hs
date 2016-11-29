@@ -1,7 +1,7 @@
 module Main.ResponseBuilders where
 
 import Rebase.Prelude
-import Router.ResponseBuilder
+import Strelka.ResponseBuilder
 import qualified Rebase.Data.Text as A
 
 

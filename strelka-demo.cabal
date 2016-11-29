@@ -1,13 +1,13 @@
 name:
-  router-demo
+  strelka-demo
 version:
   0.1
 synopsis:
-  Demo application showcasing the "router" library
+  Demo application showcasing the "strelka" library
 homepage:
-  https://github.com/nikita-volkov/router-demo
+  https://github.com/nikita-volkov/strelka-demo
 bug-reports:
-  https://github.com/nikita-volkov/router-demo/issues 
+  https://github.com/nikita-volkov/strelka-demo/issues 
 author:
   Nikita Volkov <nikita.y.volkov@mail.ru>
 maintainer:
@@ -28,7 +28,7 @@ source-repository head
   type:
     git
   location:
-    git://github.com/nikita-volkov/router-demo.git
+    git://github.com/nikita-volkov/strelka-demo.git
 
 
 executable demo
@@ -54,8 +54,8 @@ executable demo
   default-language:
     Haskell2010
   build-depends:
-    router == 0.1.*,
-    router-wai == 0.1.*,
+    strelka == 0.4.*,
+    strelka-wai == 0.4.*,
     attoparsec == 0.13.*,
     rebase >= 1.0.3 && < 2
 

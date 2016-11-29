@@ -1,7 +1,7 @@
 module Main.Effect where
 
 import Rebase.Prelude
-import Router.ResponseBuilder (ResponseBuilder)
+import Strelka.ResponseBuilder (ResponseBuilder)
 import qualified Rebase.Data.HashSet as A
 import qualified Rebase.Data.HashMap.Strict as B
 
