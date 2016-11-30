@@ -21,14 +21,6 @@ badRequestInText :: ResponseBuilder
 badRequestInText =
   badRequestStatus <> text "400 Bad Request"
 
-getPassword :: Text -> ResponseBuilder
-getPassword username =
-  undefined
-
-putPassword :: Text -> ResponseBuilder
-putPassword username =
-  undefined
-
 listCredentialsAsJSON :: [(Text, Text)] -> ResponseBuilder
 listCredentialsAsJSON credentials =
   json body
