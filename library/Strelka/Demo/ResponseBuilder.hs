@@ -13,13 +13,13 @@ notFoundInText :: ResponseBuilder
 notFoundInText =
   notFoundStatus <> text "404 Not Found"
 
-badRequestInHTML :: ResponseBuilder
-badRequestInHTML =
-  badRequestStatus <> html "<h1>400 Bad Request</h1>"
+badRequestInHTML :: Text -> ResponseBuilder
+badRequestInHTML message =
+  badRequestStatus <> html ("<h1>Bad Request</h1>" <> "<p>" <> A.text message <> "</p>")
 
-badRequestInText :: ResponseBuilder
-badRequestInText =
-  badRequestStatus <> text "400 Bad Request"
+badRequestInText :: Text -> ResponseBuilder
+badRequestInText message =
+  badRequestStatus <> text (A.text message)
 
 listCredentialsAsJSON :: [(Text, Text)] -> ResponseBuilder
 listCredentialsAsJSON credentials =

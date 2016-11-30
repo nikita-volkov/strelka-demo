@@ -75,11 +75,10 @@ okay :: Route
 okay =
   pure C.okayStatus
 
-badRequest :: Route
-badRequest =
-  ensureThatAcceptsHTML *> pure A.badRequestInHTML <|>
-  ensureThatAcceptsText *> pure A.badRequestInText <|>
-  pure C.badRequestStatus
+badRequest :: Text -> Route
+badRequest message =
+  ensureThatAcceptsHTML *> pure (A.badRequestInHTML message) <|>
+  pure (A.badRequestInText message)
 
 notFound :: Route
 notFound =
@@ -95,4 +94,4 @@ consumingBodyAsInt :: (Int -> Route) -> Route
 consumingBodyAsInt onInt =
   do
     parsingResult <- unliftEither (consumeBodyWithAttoparsec (D.decimal <* D.endOfInput))
-    either (const badRequest) onInt parsingResult
+    either badRequest onInt parsingResult
