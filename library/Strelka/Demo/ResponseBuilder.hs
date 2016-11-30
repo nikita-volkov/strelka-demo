@@ -62,7 +62,7 @@ listNumbersAsHTML numbers =
   html body
   where
     body =
-      fromString ("<ul>" <> foldMap (\x -> "<li>" <> show x <> "</li>") numbers <> "</ul>")
+      "<ul>" <> foldMap (\x -> "<li>" <> (fromString . show) x <> "</li>") numbers <> "</ul>"
 
 jsonBytesBuilder :: D.Literal -> ResponseBuilder
 jsonBytesBuilder =
