@@ -93,5 +93,5 @@ notFound =
 consumingBodyAsInt :: (Int -> Route) -> Route
 consumingBodyAsInt onInt =
   do
-    parsingResult <- unliftEither (consumeBodyWithAttoparsec (D.decimal <* D.endOfInput))
+    parsingResult <- unliftEither (consumeBodyWithBytesParser (D.decimal <* D.endOfInput))
     either badRequest onInt parsingResult

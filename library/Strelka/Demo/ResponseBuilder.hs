@@ -2,7 +2,7 @@ module Strelka.Demo.ResponseBuilder where
 
 import Prelude
 import Strelka.ResponseBuilder
-import qualified Strelka.ResponseBody as A
+import qualified Strelka.ResponseBodyBuilder as A
 import qualified Strelka.Demo.JSONBytesBuilder as B
 import qualified JSONBytesBuilder.ByteString.Builder as C
 import qualified JSONBytesBuilder.Builder as D
