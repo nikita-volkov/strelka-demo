@@ -53,7 +53,8 @@ top =
       where
         output =
           ensureThatAcceptsHTML $> A.listCredentialsAsHTML <|>
-          ensureThatAcceptsJSON $> A.listCredentialsAsJSON
+          ensureThatAcceptsJSON $> A.listCredentialsAsJSON <|>
+          pure A.listCredentialsAsText
 
 -- |
 -- Reusable route for wrapping other routes with HTTP Authorization.

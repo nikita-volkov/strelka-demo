@@ -59,6 +59,16 @@ listCredentialsAsHTML credentials =
             passwordBody =
               A.text password
 
+listCredentialsAsText :: [(Text, Text)] -> ResponseBuilder
+listCredentialsAsText credentials =
+  text body
+  where
+    body =
+      (fold . intersperse ", " . map credentialBody) credentials
+      where
+        credentialBody (username, password) =
+          A.text username <> ":" <> A.text password
+
 listNumbersAsJSON :: [Int] -> ResponseBuilder
 listNumbersAsJSON numbers =
   json body
