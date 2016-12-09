@@ -4,6 +4,7 @@ import Prelude
 import Strelka.RequestParser
 import qualified Strelka.Demo.Effect as B
 import qualified Strelka.Demo.ResponseBuilder as A
+import qualified Strelka.RequestBodyConsumer as E
 import qualified Strelka.ResponseBuilder as C
 import qualified Data.Attoparsec.ByteString.Char8 as D
 
@@ -91,5 +92,5 @@ notFound =
 consumingBodyAsInt :: (Int -> Route) -> Route
 consumingBodyAsInt onInt =
   do
-    parsingResult <- unliftEither (consumeBodyWithBytesParser (D.decimal <* D.endOfInput))
+    parsingResult <- consumeBody (E.bytesParser (D.decimal <* D.endOfInput))
     either badRequest onInt parsingResult

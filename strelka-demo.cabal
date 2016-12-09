@@ -45,7 +45,7 @@ library
   default-language:
     Haskell2010
   build-depends:
-    strelka == 0.4.*,
+    strelka >= 1 && < 1.1,
     attoparsec == 0.13.*,
     json-bytes-builder == 0.5.*,
     rerebase == 1.*
@@ -71,6 +71,6 @@ executable strelka-demo
     Haskell2010
   build-depends:
     strelka-demo,
-    strelka-wai == 0.4.*,
+    strelka-wai >= 1 && < 1.1,
     rerebase == 1.*
 
