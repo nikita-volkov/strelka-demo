@@ -51,7 +51,7 @@ library
     rerebase == 1.*
 
 
-executable demo
+executable strelka-demo
   hs-source-dirs:
     demo
   main-is:
